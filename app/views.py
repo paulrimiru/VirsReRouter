@@ -1,8 +1,8 @@
 from app import APP
 import requests
-from flask import jsonify
+from flask import jsonify, request
 
-@APP.route('/nearby', methods=['GET'])
+@APP.route('/', methods=['POST'])
 def getNearBy():
-    resp = requests.post('http://198.199.70.165/ShareCab/index.php/api', data={'trans_type':'online'})
+    resp = requests.post('http://198.199.70.165/ShareCab/index.php/api', data=request.args)
     return resp.text
